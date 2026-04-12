@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Section from './Section'
 
+const API_URL = import.meta.env.VITE_API_URL || ''  // ✅ Add this line
+
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState(null)
@@ -12,7 +14,7 @@ export default function Contact() {
     setStatus(null)
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(`${API_URL}/api/contact`, {  // ✅ Changed this line
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
