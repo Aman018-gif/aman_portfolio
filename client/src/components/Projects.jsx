@@ -72,7 +72,7 @@ export default function Projects({ projects }) {
                   </div>
                   <span className="flip-hint">Click to see links &rarr;</span>
                 </div>
-                
+
                 <div className="flip-card-back">
                   <h3>{project.name}</h3>
                   <div className="project-links">
