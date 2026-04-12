@@ -47,18 +47,26 @@ app.get('/api/download/resume/docx', (req, res) => {
   })
 })
 
-const PORT = process.env.PORT || 5000
 const MONGO_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/aman_portfolio'
 
-mongoose
-  .connect(MONGO_URI)
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server listening on port ${PORT}`)
-    })
-  })
-  .catch((err) => {
-    console.error('MongoDB connection error', err)
-    process.exit(1)
-  })
+// ✅ Connect to MongoDB once (Vercel reuses connections in serverless)
+let isConnected = false
+const connectDB = async () => {
+  if (isConnected) return
+  await mongoose.connect(MONGO_URI)
+  isConnected = true
+}
 
+connectDB().catch((err) => {
+  console.error('MongoDB connection error', err)
+})
+
+// ✅ Local dev only — Vercel doesn't use app.listen
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`)
+  })
+}
+
+export default app  // ← Critical for Vercel
