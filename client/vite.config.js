@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://aman-portfolio-3v4p.vercel.app/',
         changeOrigin: true,
       },
     },
