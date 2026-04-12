@@ -7,7 +7,6 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 
 import contactRouter from './routes/contact.js'
-import projectsRouter from './routes/projects.js'
 
 dotenv.config()
 
@@ -29,7 +28,6 @@ app.get('/api/health', (req, res) => {
 })
 
 app.use('/api/contact', contactRouter)
-app.use('/api/projects', projectsRouter)
 
 app.get('/api/download/resume/pdf', (req, res) => {
   const filePath = path.join(__dirname, 'public', 'resume.pdf')
