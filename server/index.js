@@ -61,12 +61,9 @@ connectDB().catch((err) => {
   console.error('MongoDB connection error', err)
 })
 
-// ✅ Local dev only — Vercel doesn't use app.listen
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 5000
-  app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`)
-  })
-}
+const PORT = process.env.PORT || 5000
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`)
+})
 
-export default app  // ← Critical for Vercel
+export default app

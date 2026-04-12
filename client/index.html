@@ -3,30 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              base: '#0d1117',
-              surface: '#161b22',
-              elevated: '#21262d',
-              border: '#30363d',
-              green: '#00ff88',
-              green2: '#00cc6a',
-              amber: '#ffc107',
-              muted: '#8b949e',
-              primary: '#e6edf3',
-              blue: '#58a6ff',
-            },
-            fontFamily: {
-              mono: ['JetBrains Mono', 'monospace'],
-              display: ['Space Grotesk', 'sans-serif'],
-            },
-          },
-        },
-      }
+      // Suppress "Download the React DevTools" console message
+      window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = { isDisabled: true };
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
