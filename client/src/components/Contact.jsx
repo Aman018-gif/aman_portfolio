@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Section from './Section'
 
-const API_URL = import.meta.env.VITE_API_URL || ''  // ✅ Add this line
+const API_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')  // ✅ Strip trailing slash if present
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })

@@ -15,9 +15,12 @@ const app = express()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+const rawOrigin = process.env.CLIENT_ORIGIN || '*'
+const allowedOrigin = rawOrigin !== '*' ? rawOrigin.replace(/\/$/, '') : '*'
+
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN || '*',
+    origin: allowedOrigin === '*' ? '*' : [allowedOrigin, `${allowedOrigin}/`],
   }),
 )
 app.use(express.json())
