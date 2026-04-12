@@ -145,10 +145,10 @@ function LeftPanel({ onViewProjects }) {
           >
             View Projects
           </button>
-          <a href="/api/download/resume/pdf" className="btn btn-secondary">
+          <a href={`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/download/resume/pdf`} className="btn btn-secondary">
             Resume (PDF)
           </a>
-          <a href="/api/download/resume/docx" className="btn btn-secondary">
+          <a href={`${(import.meta.env.VITE_API_URL || '').replace(/\/$/, '')}/api/download/resume/docx`} className="btn btn-secondary">
             Resume (Word)
           </a>
         </div>
